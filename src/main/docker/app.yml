@@ -1,0 +1,15 @@
+version: '2'
+services:
+    softtvf-app:
+        image: softtvf
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATA_MONGODB_URI=mongodb://softtvf-mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=SoftTVF
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    softtvf-mongodb:
+        extends:
+            file: mongodb.yml
+            service: softtvf-mongodb
